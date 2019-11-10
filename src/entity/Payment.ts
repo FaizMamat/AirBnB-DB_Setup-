@@ -1,0 +1,21 @@
+import {Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn} from "typeorm";
+import { Booking } from "./Booking";
+
+
+@Entity()
+export class Payment {
+
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column()
+    status: string;
+
+    @Column()
+    amount: number;
+
+    @ManyToOne(type => Booking, booking => booking.payments)
+    @JoinColumn({name: "booking_id"})
+    bookings: Booking;
+
+}
