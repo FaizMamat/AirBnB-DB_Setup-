@@ -5,10 +5,10 @@ import { Property } from "./Property";
 
 export class Tag {
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
     @Column()
-    label: string
+    label: string;
 
     @ManyToMany(type => Property, property => property.tags)
     @JoinTable({
