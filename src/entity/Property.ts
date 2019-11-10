@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column,ManyToOne,JoinColumn, ManyToMany,OneToMany} from "typeorm";
 import { Booking } from "./Booking";
 import { Owner } from "./Owner";
-
+import { Tag } from "./Tag";
 
 @Entity()
 export class Property {
@@ -24,4 +24,7 @@ export class Property {
     @ManyToOne(type => Owner, owner => owner.properties)
     @JoinColumn({name: "owner_id"})
     owner: Owner;
+
+    @ManyToMany(type => Tag, tag => tag.properties)
+    tags: Tag[]
 }
